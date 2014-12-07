@@ -1,4 +1,6 @@
-(ql:quickload 'cl-ppcre)
+;;;; markov.lisp
+
+(in-package #:markov)
 
 ;; A markov-table is a table of probabilities and an array of words that can start a sentence.
 (defstruct markov-table
@@ -103,3 +105,7 @@
         (setf no-trans t)
         (setf (car rval) (concatenate 'string (car rval) "."))))))
   (format nil "~{~A~^ ~}" (nreverse rval))))
+
+(defun to-dot (mtab)
+  (format t "Creating .dot file from Markov table.~%"))
+
