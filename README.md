@@ -10,15 +10,15 @@ Larger sample texts seem to work better.  The king james bible seems to work pre
 
 To use it from the REPL:
 ```commonlisp
-    * (load "markov.lisp")
-    To load "cl-ppcre":
+    * (ql:quickload 'markov)
+    To load "markov":
       Load 1 ASDF system:
-        cl-ppcre
-    ; Loading "cl-ppcre"
-    [package cl-ppcre]................................
-    .....................
-    T
-    * (defparameter *bible* (make-markov "sample_text/king_james.txt"))
+        markov
+    ; Loading "markov"
+    ..................................................
+    [package markov]..
+    (MARKOV)
+    * (defparameter *bible* (make-markov "samples/king_james.txt"))
     * (generate-random-sentence *bible* :first "Behold")
     
     "Behold my voice: cause of the land of leprosy."
