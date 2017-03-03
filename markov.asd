@@ -1,10 +1,10 @@
 ;;;; markov.asd
 
 (asdf:defsystem #:markov
-  :description "Describe markov here"
+  :description "Markov text generator."
   :author "Jeremiah LaRocco <jeremiah.larocco@gmail.com>"
-  :license "Specify license here"
-  :depends-on (#:cl-ppcre)
+  :license "ISC"
+  :depends-on ()
   :serial t
   :components ((:file "package")
                (:file "markov")))
