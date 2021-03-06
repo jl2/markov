@@ -43,13 +43,17 @@
         do (compute-probabilities goesto))
   mtable)
 
-(defun create-markov-table (filename)
-  (let ((gt-table (make-hash-table :test 'equal))
-        (file-content (alexandria:read-file-into-string filename :buffer-size (* 4096 2))))
+(defun add-file-to-table (filename gt-table)
+  (let ((file-content (alexandria:read-file-into-string filename :buffer-size (* 4096 2))))
     (loop for (prev-word  next-word) on (ju:split file-content) by #'cdr do
       (when (not (gethash prev-word gt-table))
         (setf (gethash prev-word gt-table) (make-hash-table :test 'equal)))
-      (incf (gethash next-word (gethash prev-word gt-table) 0)))
+      (incf (gethash next-word (gethash prev-word gt-table) 0)))))
+
+(defun create-markov-table (filenames)
+  (let ((gt-table (make-hash-table :test 'equal)))
+    (dolist (file-name filenames)
+      (add-file-to-table file-name gt-table))
     (create-probabilities gt-table)))
 
 (defun pick-random-word (mtable)
@@ -78,8 +82,8 @@
                     collect word)))
     (make-array (length firsts) :initial-contents firsts)))
 
-(defun make-markov (fname)
-  (let ((prob-table (create-markov-table fname)))
+(defun make-markov (file-names)
+  (let ((prob-table (create-markov-table (ensure-list file-names))))
     (make-instance 'markov-table
                    :prob-table prob-table
                    :first-words (good-first-words prob-table))))
