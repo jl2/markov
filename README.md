@@ -1,29 +1,34 @@
-This is a script for simple Markov text generation.
+# markov
+### _Jeremiah LaRocco <jeremiah_larocco@fastmail.com>_
 
-It requires the cl-ppcre, which can be installed using (ql:quickload 'cl-ppcre).
+## About
 
-The general idea is to load a sample text file and create a word->word probability table using the make-markov function.  make-markov will return a markov-table structure that contains hash table and an array of words that can be used at the beginning of sentences.
+This is a Common Lisp library for simple Markov text generation.
 
-The markov-table structure can be passed to the generate-random-sentence function to generate a random sentence using the probabilities from the table.  generate-random-sentence takes an optional keyword parameter, :first, which specifies the first word of the sentence.  If not specified, a random word is used.
+## Usage
 
-Larger sample texts seem to work better.  The king james bible seems to work pretty well.
+The easiest way to use the library is to clone the repo into Quicklisp's "local project" directory
+and use ql:quickload:
 
-To use it from the REPL:
 ```commonlisp
-    * (load "markov.lisp")
-    To load "cl-ppcre":
-      Load 1 ASDF system:
-        cl-ppcre
-    ; Loading "cl-ppcre"
-    [package cl-ppcre]................................
-    .....................
-    T
-    * (defparameter *bible* (make-markov "sample_text/king_james.txt"))
-    * (generate-random-sentence *bible* :first "Behold")
-    
-    "Behold my voice: cause of the land of leprosy."
-    * (generate-random-sentence *bible* :first "Behold")
-    
-    "Behold my right hand be destroyed."
+    * (ql:quickload :markov)
+    * (defparameter *bible* (markov:make-markov (asdf:system-relative-pathname :markov  "samples/king_james.txt")))
+    * (markov:generatve-random-sentence *bible* :first "Behold")
+    * (markov:generate-random-sentence *bible* :first "Behold")
     * 
 ```
+
+For more information, see [project.org](https://github.com/jl2/markov/project.org)
+
+## License
+
+Copyright (c) 2021 Jeremiah LaRocco <jeremiah_larocco@fastmail.com>
+
+The text samples in the samples directory are public domain and come from [[https://www.gutenberg.org/][Project Gutenberg]].
+
+The library itself is released under the ISC license. See [LICENSE](https://github.com/jl2/markov/LICENSE) for details.
+
+
+
+
+

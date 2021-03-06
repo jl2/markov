@@ -1,0 +1,27 @@
+* Simple Common Lisp Markov Text Generator
+
+** About
+   This is a Common Lisp library for doing simple Markov text generation.
+
+** Usagbe
+
+#+name: markov-library-example
+#+begin_src lisp :results output
+  (ql:quickload :markov)
+
+  (let* ((filename (asdf:system-relative-pathname :markov  "samples/war_and_peace.txt"))
+         (mtable (markov:make-markov filename)))
+    (dotimes (i 10)
+      (print (markov:generate-random-sentence mtable))))
+
+#+end_src
+
+** License
+
+   Copyright (c) 2021 Jeremiah LaRocco <jeremiah_larocco@fastmail.com>
+
+   The text samples in the samples directory are public domain and come from [[https://www.gutenberg.org/][Project Gutenberg]].
+
+   The library itself is released under the ISC license.  See the [[https://github.com/jl2/markov/LICENSE][LICENSE]] file for details.
+
+
