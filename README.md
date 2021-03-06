@@ -24,9 +24,9 @@ For more information, see [project.org](https://github.com/jl2/markov/blob/maste
 
 Copyright (c) 2021 Jeremiah LaRocco <jeremiah_larocco@fastmail.com>
 
-The text samples in the samples directory are public domain and come from [[https://www.gutenberg.org/][Project Gutenberg]].
+The text samples in the samples directory are public domain and come from [Project Gutenberg](https://www.gutenberg.org/).
 
-The library itself is released under the ISC license. See [LICENSE](https://github.com/jl2/markov/blob/masterLICENSE) for details.
+The library itself is released under the ISC license. See [LICENSE](https://github.com/jl2/markov/blob/master/LICENSE) for details.
 
 
 
