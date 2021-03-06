@@ -22,6 +22,6 @@
 
    The text samples in the samples directory are public domain and come from [[https://www.gutenberg.org/][Project Gutenberg]].
 
-   The library itself is released under the ISC license.  See the [[https://github.com/jl2/markov/LICENSE][LICENSE]] file for details.
+   The library itself is released under the ISC license.  See the [[https://github.com/jl2/markov/blob/master/LICENSE][LICENSE]] file for details.
 
 
